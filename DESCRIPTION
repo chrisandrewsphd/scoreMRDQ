@@ -1,12 +1,15 @@
 Package: scoreMRDQ
-Title: What the Package Does (One Line, Title Case)
+Title: Score the Michigan Retinal Degeneration Questionnaire
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Chris", "Andrews", "A", "chrisaa@umich.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5130-6374"))
+Description: Package has one function, scoreMRDQ(), which takes a data.frame of responses provided by patients and returns domain scores (and standard errors) for the 7 MRDQ domains: Central Vision, Color Vision, Contrast Sensitivity, Scotopic Function, Mesopic Peripheral Vision, Photopic Peripheral Vision, and Light Sensitivity.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+Imports: 
+    mirt
+Depends: 
+    R (>= 2.10)
