@@ -22,4 +22,12 @@ justme <- read.table(
   text = "Me,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,2,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,2,1,1,0,0,0,0,0,2,0,0,0",
   sep = ",")
 scoreMRDQ(justme)
+
+justyou <- data.frame(ID="You", matrix(nrow=1, sample(0:3, 59, TRUE)))
+scoreMRDQ(justyou)
+
+names(justme) <- names(justyou) <- c("ID", sprintf("Q\%0.2d", seq(59)))
+justus <- rbind(justme, justyou)
+scoreMRDQ(justus, verbose = 1)
+
 }
