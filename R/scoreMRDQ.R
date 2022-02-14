@@ -35,21 +35,21 @@ scoreMRDQ <- function(dat, verbose = 0) {
   row.names(mat) <- dat[[1]]
   if (!is.numeric(mat)) stop("Last 59 columns must be numeric")
   if (!isTRUE(all.equal(trunc(mat), mat))) stop("Last 59 columns must be integers")
-  if (min(mat, na.rm = TRUE) < 0) stop("Last 59 columns cannot contain negative numbers")
-  if (max(mat, na.rm = TRUE) > 5) {
-    if (verbose > 1) cat("Numbers above 5 in last 59 columns will be treated as missing responses.\n")
+  if (suppressWarnings(min(mat, na.rm = TRUE) < 0)) stop("Last 59 columns cannot contain negative numbers")
+  if (suppressWarnings(max(mat, na.rm = TRUE) > 5)) {
+    if (verbose > 1) warning("Numbers above 5 in last 59 columns will be treated as missing responses.\n")
   }
 
   # might want these warnings to just be printed when verbose > 0.
   AnxietyQuestions <- 59
   if (any(mat[, AnxietyQuestions] == 5, na.rm = TRUE)) {
     for (aq in AnxietyQuestions) mat[which(mat[, aq] == 5), aq] <- 4
-    if (verbose > 1) cat("Anxiety Question (59, PS7) only has responses 0-4. '5' will be treated as '4' (missing).\n")
+    if (verbose > 1) warning("Anxiety Question (59, PS7) only has responses 0-4. '5' will be treated as '4' (missing).\n")
   }
   ThreeBetaQuestions <- c(20, 44:52, 53, 54, 56, 57)
   if (any(mat[, ThreeBetaQuestions] == 4, na.rm = TRUE)) {
     for (tbq in ThreeBetaQuestions) mat[which(mat[, tbq] == 4), tbq] <- 3
-    if (verbose > 1) cat("Some Questions (", ThreeBetaQuestions , ") had only had responses 0-3 in model building data. '4' ('does not help' or 'my vision is too poor') will be treated as '3' ('always' or 'extreme difficulty').\n")
+    if (verbose > 1) warning(cat("Some Questions (", ThreeBetaQuestions , ") had only had responses 0-3 in model building data. '4' ('does not help' or 'my vision is too poor') will be treated as '3' ('always' or 'extreme difficulty').\n"))
   }
 
   mat[is.na(mat)] <- 6 # avoid error from fscores when all responses are missing (get warning instead)
