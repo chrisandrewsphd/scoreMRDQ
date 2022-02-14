@@ -63,7 +63,10 @@ scoreMRDQ <- function(dat, verbose = 0) {
   # create storage
   theta_se_CV <- theta_se_Col <- theta_se_Cnt <- theta_se_SF <- theta_se_MF <- theta_se_PF <- theta_se_PS <- matrix(NA_real_, nrow = nrow(dat), ncol = 2)
 
-  # score patients one at a time
+  # Score patients one at a time
+  # Scoring all at once can result in fscores errorring out
+  #   if one person has all missing data on a scale
+  #   Should notify mirt author.
   for (i in seq(nrow(dat))) {
     if (verbose>0) cat("i = ", i, "\n")
 
