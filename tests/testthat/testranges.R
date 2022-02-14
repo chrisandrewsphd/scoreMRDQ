@@ -53,3 +53,5 @@ NAdf <- data.frame(ID = "NA", CV = NA_real_, Col = NA_real_, Cnt = NA_real_, SF 
 
 expect_equal(scoreMRDQ(dat[4, ])$thetas[-1], NAdf[-1])
 expect_equal(scoreMRDQ(dat[5, ])$thetas[-1], NAdf[-1])
+
+expect_equal(scoreMRDQ(dat)$thetas[-1], rbind(MIN, MAX, MAX, NAdf, NAdf)[-1])
