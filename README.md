@@ -27,8 +27,8 @@ devtools::install_github("chrisandrewsphd/scoreMRDQ")
 ### Example 1
 
 This is a basic example which shows you how to score data from a single
-individual. `justme` is a data.frame with 15 variables and 1 row. The 15
-variables are the patient identifier followed by their 14 responses.
+individual. `justme` is a data.frame with 60 variables and 1 row. The 60
+variables are the patient identifier followed by their 59 responses.
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -60,6 +60,11 @@ scoreMRDQ(justme)
 
 ### Example 2
 
+If you need to score many respondents (or the same respondent at several
+visits), you can include them all in a single data.frame and call
+`scoreMVAQ()`. The data.frame must have 60 columns still but can have
+more than 1 row.
+
 ``` r
 library(scoreMRDQ)
 
@@ -76,40 +81,40 @@ justus <- rbind(justme, justyou, andyoutoo)
 justus
 #>      ID Q01 Q02 Q03 Q04 Q05 Q06 Q07 Q08 Q09 Q10 Q11 Q12 Q13 Q14 Q15 Q16 Q17 Q18
 #> 1    Me   0   0   0   0   0   0   0   0   1   1   1   0   0   0   1   1   1   2
-#> 2   You   1   1   3   3   3   0   2   3   4   1   2   3   1   0   2   1   3   0
-#> 3 You 2   4   3   4   0   3   3   1   1   1   1   4   3   0   3   0   2   4   3
+#> 2   You   1   4   0   0   3   2   4   4   2   0   0   2   0   3   1   1   0   3
+#> 3 You 2   3   1   4   3   3   2   1   1   3   4   0   4   4   2   4   1   1   4
 #>   Q19 Q20 Q21 Q22 Q23 Q24 Q25 Q26 Q27 Q28 Q29 Q30 Q31 Q32 Q33 Q34 Q35 Q36 Q37
 #> 1   0   0   0   0   1   1   1   0   0   0   0   1   0   0   1   0   0   1   0
-#> 2   3   4   2   4   1   4   0   1   1   2   3   3   4   0   4   4   1   4   4
-#> 3   0   4   3   4   4   0   2   0   2   1   0   1   1   0   0   1   1   1   1
+#> 2   3   3   2   0   4   3   0   3   0   0   0   3   1   0   3   4   1   0   2
+#> 3   0   4   2   1   2   0   2   1   0   2   0   0   3   1   3   1   1   1   1
 #>   Q38 Q39 Q40 Q41 Q42 Q43 Q44 Q45 Q46 Q47 Q48 Q49 Q50 Q51 Q52 Q53 Q54 Q55 Q56
 #> 1   0   1   0   0   1   0   0   1   0   0   2   1   1   0   0   0   0   0   2
-#> 2   3   1   0   0   4   0   1   0   0   1   2   1   0   1   3   2   1   0   0
-#> 3   4   3   1   3   0   0   0   4   3   4   4   1   4   0   3   1   1   1   2
+#> 2   0   3   4   3   3   1   0   1   4   4   1   0   0   1   3   3   1   0   3
+#> 3   1   3   4   1   2   4   4   0   1   2   0   3   2   3   2   4   3   4   0
 #>   Q57 Q58 Q59
 #> 1   0   0   0
-#> 2   4   4   1
-#> 3   2   0   0
+#> 2   4   1   1
+#> 3   1   2   2
 
 scoreMRDQ(justus, verbose = 1)
 #> i =  1 
 #> i =  2 
 #> i =  3
 #> $thetas
-#>      ID         CV       Col       Cnt         SF         PF         MF
-#> 1    Me -1.0840606 -1.348020 0.0638529 -0.4436402 -0.6177631 -1.3836631
-#> 2   You  0.4580258  1.319758 0.5775050  0.7037031  0.3260943  0.5519476
-#> 3 You 2  0.9619569  1.211523 1.1212865 -0.2459637  0.9903468 -0.3943418
-#>            PS
-#> 1 -1.43296419
-#> 2 -0.07880125
-#> 3 -0.49982406
+#>      ID          CV        Col       Cnt          SF         PF         MF
+#> 1    Me -1.08406062 -1.3480195 0.0638529 -0.44364017 -0.6177631 -1.3836631
+#> 2   You -0.04157573  0.3145136 0.4648305  0.37856900  0.4750286  0.3625904
+#> 3 You 2  0.79139894  1.8843134 0.7767391 -0.07789574  0.5115362  0.6160961
+#>           PS
+#> 1 -1.4329642
+#> 2  0.4926968
+#> 3  0.6693134
 #> 
 #> $ses
 #>      ID        CV       Col       Cnt        SF        PF        MF        PS
 #> 1    Me 0.2925954 0.5789730 0.2301166 0.1294696 0.3168945 0.3393907 0.3869802
-#> 2   You 0.1981676 0.3406639 0.2489266 0.2603454 0.2214051 0.3466525 0.3165307
-#> 3 You 2 0.2186978 0.3774145 0.2944890 0.1712886 0.2585372 0.1546999 0.2610787
+#> 2   You 0.2340796 0.3760582 0.2444857 0.1760781 0.2417927 0.2580260 0.2873508
+#> 3 You 2 0.1829368 0.3923008 0.2273556 0.1699661 0.1859557 0.2443135 0.3448256
 ```
 
 The option `verbose = 1` provides some messaging during the execution of
