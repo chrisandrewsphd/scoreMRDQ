@@ -1,0 +1,71 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# scoreMRDQ
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of scoreMRDQ is to convert the 59 responses from the Michigan Retinal Degeneration Questionnaire (MRDQ) to seven domain scores: Central Vision, Color Vision, Contrast Sensitivity, Scotopic Function, Photopic Peripheral Vision, Mesopic Peripheral Vision, and Photosensitivity.
+
+
+## Installation
+
+You can install the development version of scoreMRDQ from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("chrisandrewsphd/scoreMRDQ")
+```
+
+## Examples
+
+### Example 1
+
+This is a basic example which shows you how to score data from a single individual. `justme` is a data.frame with 15 variables and 1 row.  The 15 variables are the patient identifier followed by their 14 responses.
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example1}
+library(scoreMRDQ)
+
+justme <- read.table(
+  text = "Me,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,2,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,2,1,1,0,0,0,0,0,2,0,0,0",
+  sep = ",")
+justme
+
+scoreMRDQ(justme)
+```
+
+### Example 2
+```{r example2}
+library(scoreMRDQ)
+
+justme <- read.table(
+  text = "Me,0,0,0,0,0,0,0,0,1,1,1,0,0,0,1,1,1,2,0,0,0,0,1,1,1,0,0,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,2,1,1,0,0,0,0,0,2,0,0,0",
+  sep = ",")
+justyou <- data.frame(ID="You", matrix(nrow=1, sample(0:4, 59, TRUE)))
+andyoutoo <- data.frame(ID="You 2", matrix(nrow=1, sample(0:4, 59, TRUE)))
+
+names(justme) <- names(justyou) <- names(andyoutoo) <- 
+  c("ID", sprintf("Q%0.2d", seq(59)))
+
+justus <- rbind(justme, justyou, andyoutoo)
+justus
+
+scoreMRDQ(justus, verbose = 1)
+```
+
+The option `verbose = 1` provides some messaging during the execution of `scoreMRDQ()`.
