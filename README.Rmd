@@ -36,8 +36,6 @@ devtools::install_github("chrisandrewsphd/scoreMRDQ")
 
 This is a basic example which shows you how to score data from a single individual. `justme` is a data.frame with 60 variables and 1 row.  The 60 variables are the patient identifier followed by their 59 responses.
 
-This is a basic example which shows you how to solve a common problem:
-
 ```{r example1}
 library(scoreMRDQ)
 
@@ -51,7 +49,7 @@ scoreMRDQ(justme)
 
 ### Example 2
 
-If you need to score many respondents (or the same respondent at several visits), you can include them all in a single data.frame and call `scoreMVAQ()`. The data.frame must have 60 columns still but can have more than 1 row.
+If you need to score many respondents (or the same respondent at several visits), you can include them all in a single data.frame and call `scoreMRDQ()`. The data.frame must have 60 columns still but can have more than 1 row.
 
 ```{r example2}
 library(scoreMRDQ)
