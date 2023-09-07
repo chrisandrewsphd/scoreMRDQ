@@ -65,7 +65,7 @@
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A list with two components, each an N by 7 matrix. The first, named thetas, contains the 7 domain scores for each patient.  The second, named ses, contains the standard errors of the thetas.</p>
+<p>A list with two components, each an N by 8 matrix. The first, named thetas, contains the ID and 7 domain scores for each patient.  The second, named ses, contains the ID and the standard errors of the thetas.</p>
     </div>
 
     <div class="section level2">
@@ -86,14 +86,12 @@
 <span class="r-in"><span><span class="va">justyou</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>ID<span class="op">=</span><span class="st">"You"</span>, <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">59</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">scoreMRDQ</span><span class="op">(</span><span class="va">justyou</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $thetas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ID         CV        Col       Cnt         SF       PF          MF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 You 0.06540353 -0.6998763 0.2463815 -0.1620274 0.148401 -0.08781545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           PS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 -0.2086406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID          CV       Col      Cnt        SF        PF         MF         PS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 You -0.07679481 0.8159522 1.067128 0.4614017 0.7948929 -0.3513896 -0.8869242</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ses</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ID        CV       Col       Cnt        SF        PF        MF        PS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 You 0.1781389 0.4489697 0.2404684 0.1793388 0.1972829 0.1790009 0.2891968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID        CV       Col       Cnt        SF       PF       MF        PS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 You 0.2235906 0.3450863 0.1982737 0.1820538 0.194644 0.162173 0.3199253</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">justme</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">justyou</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ID"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html" class="external-link">sprintf</a></span><span class="op">(</span><span class="st">"Q%0.2d"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">59</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -102,17 +100,17 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> i =  1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> i =  2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $thetas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ID          CV        Col       Cnt         SF         PF          MF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Me -1.08406062 -1.3480195 0.0638529 -0.4436402 -0.6177631 -1.38366310</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 You  0.06540353 -0.6998763 0.2463815 -0.1620274  0.1484010 -0.08781545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ID          CV        Col       Cnt         SF         PF         MF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Me -1.08406062 -1.3480195 0.0638529 -0.4436402 -0.6177631 -1.3836631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 You -0.07679481  0.8159522 1.0671284  0.4614017  0.7948929 -0.3513896</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           PS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 -1.4329642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 -0.2086406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 -0.8869242</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ses</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ID        CV       Col       Cnt        SF        PF        MF        PS</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  Me 0.2925954 0.5789730 0.2301166 0.1294696 0.3168945 0.3393907 0.3869802</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 You 0.1781389 0.4489697 0.2404684 0.1793388 0.1972829 0.1790009 0.2891968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 You 0.2235906 0.3450863 0.1982737 0.1820538 0.1946440 0.1621730 0.3199253</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
