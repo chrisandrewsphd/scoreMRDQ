@@ -12,7 +12,7 @@ scoreMRDQ(dat, verbose = 0)
 \item{verbose}{A number indicating the amount of printing during function execution. 0 (default) is none. Higher numbers may result in more printing.}
 }
 \value{
-A list with two components, each an N by 7 matrix. The first, named thetas, contains the 7 domain scores for each patient.  The second, named ses, contains the standard errors of the thetas.
+A list with two components, each an N by 8 matrix. The first, named thetas, contains the ID and 7 domain scores for each patient.  The second, named ses, contains the ID and the standard errors of the thetas.
 }
 \description{
 Score the Michigan Retinal Degeneration Questionnaire

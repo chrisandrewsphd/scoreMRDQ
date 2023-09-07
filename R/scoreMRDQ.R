@@ -3,7 +3,7 @@
 #' @param dat data.frame with N rows and 60 columns.  First column is patient ID and the remaining columns are responses to the 59 items.  Responses should be integers from 0 to 5.
 #' @param verbose A number indicating the amount of printing during function execution. 0 (default) is none. Higher numbers may result in more printing.
 #'
-#' @return A list with two components, each an N by 7 matrix. The first, named thetas, contains the 7 domain scores for each patient.  The second, named ses, contains the standard errors of the thetas.
+#' @return A list with two components, each an N by 8 matrix. The first, named thetas, contains the ID and 7 domain scores for each patient.  The second, named ses, contains the ID and the standard errors of the thetas.
 #' @export
 #'
 #' @examples
