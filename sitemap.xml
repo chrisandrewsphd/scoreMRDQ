@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/404.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/index.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://chrisandrewsphd.github.io/scoreMRDQ/reference/scoreMRDQ.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/404.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/LICENSE-text.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/LICENSE.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/authors.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/index.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/reference/index.html</loc></url>
+<url><loc>https://chrisandrewsphd.github.io/scoreMRDQ/reference/scoreMRDQ.html</loc></url>
 </urlset>
+
