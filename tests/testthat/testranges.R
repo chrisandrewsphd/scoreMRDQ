@@ -23,6 +23,9 @@ dat <- dat[c("ID", grep("ID", names(dat), value = TRUE, invert = TRUE))]
 # dat
 # print(scoreMRDQ(dat), digits = 15)
 
+# the tolerance is usually relative (i.e. ⁠mean(abs(x - y) / mean(abs(y)) < tolerance⁠), except when the differences are very small, when it becomes absolute (i.e. ⁠mean(abs(x - y) < tolerance⁠).
+tolerance_to_original <- 1e-6
+
 MIN <- data.frame(
   ID  = "MIN",
   CV  = -1.95439406042228,
@@ -33,7 +36,10 @@ MIN <- data.frame(
   MF  = -1.77145752827356,
   PS  = -2.27818252960787)
 
-expect_equal(scoreMRDQ(dat[1, ])$thetas, MIN)
+expect_equal(
+  scoreMRDQ(dat[1, ])$thetas,
+  MIN,
+  tolerance = tolerance_to_original)
 
 MAX <- data.frame(
   ID  = "MAX",
@@ -45,13 +51,37 @@ MAX <- data.frame(
   MF  = 2.42210898910922,
   PS  = 2.89051967433846)
 
-expect_equal(scoreMRDQ(dat[2, ])$thetas, MAX)
+expect_equal(
+  scoreMRDQ(dat[2, ])$thetas,
+  MAX,
+  tolerance = tolerance_to_original)
 
-expect_equal(scoreMRDQ(dat[3, ])$thetas[-1], MAX[-1])
+expect_equal(
+  scoreMRDQ(dat[3, ])$thetas[-1],
+  MAX[-1],
+  tolerance = tolerance_to_original)
 
-NAdf <- data.frame(ID = "NA", CV = NA_real_, Col = NA_real_, Cnt = NA_real_, SF = NA_real_, PF = NA_real_, MF = NA_real_, PS = NA_real_)
+NAdf <- data.frame(
+  ID = "NA",
+  CV = NA_real_,
+  Col = NA_real_,
+  Cnt = NA_real_,
+  SF = NA_real_,
+  PF = NA_real_,
+  MF = NA_real_,
+  PS = NA_real_)
 
-expect_equal(scoreMRDQ(dat[4, ])$thetas[-1], NAdf[-1])
-expect_equal(scoreMRDQ(dat[5, ])$thetas[-1], NAdf[-1])
+expect_equal(
+  scoreMRDQ(dat[4, ])$thetas[-1],
+  NAdf[-1],
+  tolerance = tolerance_to_original)
 
-expect_equal(scoreMRDQ(dat)$thetas[-1], rbind(MIN, MAX, MAX, NAdf, NAdf)[-1])
+expect_equal(
+  scoreMRDQ(dat[5, ])$thetas[-1],
+  NAdf[-1],
+  tolerance = tolerance_to_original)
+
+expect_equal(
+  scoreMRDQ(dat)$thetas[-1],
+  rbind(MIN, MAX, MAX, NAdf, NAdf)[-1],
+  tolerance = tolerance_to_original)
