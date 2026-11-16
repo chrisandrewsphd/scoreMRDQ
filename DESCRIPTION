@@ -1,6 +1,6 @@
 Package: scoreMRDQ
 Title: Score the Michigan Retinal Degeneration Questionnaire
-Version: 0.1.0
+Version: 0.1.48
 Authors@R: 
     person("Chris", "Andrews", "A", "chrisaa@umich.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5130-6374"))
@@ -8,7 +8,7 @@ Description: Package has one function, scoreMRDQ(), which takes a data.frame of 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+Config/roxygen2/version: 8.1.1
 Imports: 
     mirt
 Depends: 
